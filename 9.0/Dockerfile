@@ -19,6 +19,9 @@ RUN set -x; \
         && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false -o APT::AutoRemove::SuggestsImportant=false npm \
         && rm -rf /var/lib/apt/lists/* wkhtmltox.deb
 
+# Add odoo user
+RUN adduser --uid 1000 --disabled-password --gecos "odoo" --shell=/bin/false odoo
+
 # Install Odoo
 ENV ODOO_VERSION 9.0
 ENV ODOO_RELEASE 20151008
